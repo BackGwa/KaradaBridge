@@ -4,7 +4,7 @@
 import json, os
 import numpy as nlib
 
-def setup(config_path, language_path):
+def setup(config_path, language_path, camera_index):
 
     config = open(f'{config_path}/karada.json', mode='r', encoding='utf-8')
     data = json.load(config)
@@ -27,20 +27,20 @@ def setup(config_path, language_path):
         return -1
         
     try:
-        tracking(clib,mlib, langjson)
+        tracking(clib,mlib, langjson, camera_index)
     except:
         print(f'''{langjson['error_msg']['UNKNOWN']}''')
         return -1
     
     return 0
 
-def tracking(clib, mlib, langjson):
+def tracking(clib, mlib, langjson, camera_index):
     
     drawing = mlib.solutions.drawing_utils
     drawing_styles = mlib.solutions.drawing_styles
     poseset = mlib.solutions.pose
     
-    cap = clib.VideoCapture(0)
+    cap = clib.VideoCapture(camera_index)
     with poseset.Pose(
             min_detection_confidence=0.5,
             min_tracking_confidence=0.5) as pose:
