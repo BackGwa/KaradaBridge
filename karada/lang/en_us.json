@@ -1,6 +1,7 @@
 {
     "error_msg" : {
         "LIBRARY" : "Required library does not exist!",
-        "UNKNOWN" : "An unknown error has occurred!"
+        "UNKNOWN" : "An unknown error has occurred!",
+        "CAMERA" : "Camera not found!"
     }
 }
