@@ -4,9 +4,9 @@
 import json, os
 import numpy as nlib
 
-def setup():
+def setup(config_path, language_path):
 
-    config = open('karada.json', mode='r', encoding='utf-8')
+    config = open(f'{config_path}/karada.json', mode='r', encoding='utf-8')
     data = json.load(config)
     config.close()
     
@@ -15,7 +15,7 @@ def setup():
     language = data['config']['language']
     sendrate = data['config']['sendrate']
     
-    langpack = open(f'./lang/{language}.json', mode='r', encoding='utf-8')
+    langpack = open(f'{language_path}/{language}.json', mode='r', encoding='utf-8')
     langjson = json.load(langpack)
     langpack.close()
     
@@ -64,9 +64,7 @@ def tracking(clib, mlib, langjson):
                 poseset.POSE_CONNECTIONS,
                 landmark_drawing_spec=drawing_styles.get_default_pose_landmarks_style())
 
-            clib.imshow('Karada Preview')
-            if clib.waitKey(5) & 0xFF == 27:
-                break
+            clib.imshow('Karada Preview', clib.flip(image, 1))
 
     cap.release()
     return 0
