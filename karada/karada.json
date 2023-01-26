@@ -1,0 +1,10 @@
+{
+    "karada" : {
+        "version" : "0.00"
+    },
+
+    "config" : {
+        "language" : "ko-kr",
+        "sendrate" : "30"
+    }
+}
