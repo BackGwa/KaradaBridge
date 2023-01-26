@@ -4,4 +4,4 @@
 import karada.lib as krd
 
 if __name__ == "__main__":
-    krd.setup()
+    krd.setup('./karada','./karada/language')
